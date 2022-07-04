@@ -1,7 +1,15 @@
-version: '3.8'
+version: "3"
+
 services:
-  app:
-    build: .
-    command: uvicorn app.main:app --host 127.0.0.1
+  api:
+    build: ./
+    image: cloudapi
+    command:  uvicorn src.main:app --reload --workers 1 --host 0.0.0.0 --port 5000
     ports:
-      - "8000:8000"
+      - 5000:5000
+    networks:
+      - test_network
+
+networks:
+  test_network:
+    driver: bridge

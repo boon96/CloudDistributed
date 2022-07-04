@@ -1,6 +1,14 @@
 FROM python
+COPY ./src /app/src
+COPY requirements.txt /app
+COPY BankNote_Authentication.csv /app
+COPY BankNotes.py /app
+COPY classifier.pkl /app
+COPY ModelTraining.ipynb /app
+
 WORKDIR /app
-COPY ./requirements.txt .
+
 RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 8000
+
+EXPOSE 5000
+

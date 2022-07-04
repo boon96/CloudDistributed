@@ -1,28 +1,17 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 17 21:40:41 2020
-
-@author: win10
-"""
 
 # 1. Library imports
 import uvicorn
 from fastapi import FastAPI
 from BankNotes import BankNote
-import numpy as np
 import pickle
-import pandas as pd
+from typing import Optional
+
 # 2. Create the app object
 app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-# 3. Index route, opens automatically on http://127.0.0.1:8000
-@app.get('/')
-def index():
-    return {'message': 'Hello, World'}
 
-# 4. Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
 @app.post('/predict')
 def predict_banknote(data:BankNote):
@@ -41,7 +30,7 @@ def predict_banknote(data:BankNote):
         'prediction': prediction
     }
 
-@app.post('/predict')
+@app.post('/get_weight')
 def get_weight(data:BankNote):
     data = data.dict()
     variance=data['variance']
@@ -50,9 +39,3 @@ def get_weight(data:BankNote):
     entropy=data['entropy']
     return {"Weight is", variance}
 
-# 5. Run the API with uvicorn
-#    Will run on http://127.0.0.1:8000
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8000)
-    
-#uvicorn app:app --reload
