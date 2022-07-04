@@ -2,6 +2,12 @@ version: '3.8'
 services:
   app:
     build: .
-    command: uvicorn app.main:app --host 127.0.0.1
+    command: uvicorn app.app:app --host 127.0.0.1
     ports:
       - "8000:8000"
+  
+  server:
+    build: .
+    command: uvicorn app.server:appServer --host 127.0.0.1
+    ports:
+      - "8001:8001"
