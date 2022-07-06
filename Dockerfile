@@ -1,14 +1,13 @@
 FROM python
-COPY ./src /app/src
+RUN apt-get update
+RUN apt install -y libgl1-mesa-glx
+COPY ./Query_API /app/Query_API
+COPY ./data /app
 COPY requirements.txt /app
-COPY BankNote_Authentication.csv /app
-COPY BankNotes.py /app
-COPY classifier.pkl /app
-COPY ModelTraining.ipynb /app
 
 WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 8000
 

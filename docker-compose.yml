@@ -4,9 +4,9 @@ services:
   api:
     build: ./
     image: cloudapi
-    command:  uvicorn src.main:app --reload --workers 1 --host 0.0.0.0 --port 5000
+    command:  uvicorn Query_API.Online_API:app --reload --workers 1 --host 0.0.0.0 --port 8000
     ports:
-      - 5000:5000
+      - 8000:8000
     networks:
       - test_network
 
