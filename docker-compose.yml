@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  api:
+  api_1:
     build: ./Query_API/
     image: query_api
     command:  uvicorn Online_API:app --reload --workers 1 --host 0.0.0.0 --port 8000
@@ -10,7 +10,7 @@ services:
     networks:
       - test_network
 
-  label:
+  label_1:
     build: ./Label_Query/
     image: label_query
     command: "python3 ./Label_Query.py http://host.docker.internal:8000/predict/"
@@ -19,7 +19,27 @@ services:
     networks:
       - test_network
     depends_on:
-      - api
+      - api_1
+
+  api_2:
+    build: ./Online_API_2/
+    image: query_api2
+    command:  uvicorn Online_API:app --reload --workers 1 --host 0.0.0.0 --port 8002
+    ports:
+      - 8002:8002
+    networks:
+      - test_network
+
+  label_2:
+    build: ./Label_Query/
+    image: label_query
+    command: "python3 ./Label_Query.py http://host.docker.internal:8002/predict/"
+    ports:
+      - 8003:8003
+    networks:
+      - test_network
+    depends_on:
+      - api_2
 
 networks:
   test_network:
