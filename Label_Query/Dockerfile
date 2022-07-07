@@ -10,5 +10,4 @@ COPY ./logs /app/logs
 COPY ./models /app/models
 COPY Label_Query.py /app
 WORKDIR /app
-#CMD python3 ./Label_Query.py
 EXPOSE 8001
