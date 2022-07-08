@@ -8,9 +8,8 @@ RUN apt-get install ffmpeg libsm6 libxext6  -y
 COPY ./Images /app/Images
 COPY ./logs /app/logs
 COPY ./models /app/models
-COPY better.ipynb /app
-COPY gen_dataset.ipynb /app
 COPY integrated_stacking_model.py /app
+COPY combine.py /app
 COPY model_graph.png /app
 WORKDIR /app
 EXPOSE 8004

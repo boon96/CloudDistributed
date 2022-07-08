@@ -82,4 +82,4 @@ for batch in test.as_numpy_iterator():
 print(pre.result(), re.result(), acc.result())
 
 # Save Model
-model.save('../Query_API/models/imageclassifier.h5')
+# model.save('../Query_API/models/imageclassifier.h5')
