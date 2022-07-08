@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import cv2
-
+from starlette.responses import FileResponse
 app = FastAPI()
 
 @app.get("/")
@@ -21,3 +21,8 @@ def prediction(image):
         print("Got Face")
         return {"result" : "Face"}
 
+# Request to predict
+@app.get("/get_model")
+def get_model():
+    file_location='/app/models/imageclassifier_2.h5'
+    return FileResponse(file_location, media_type='application/octet-stream',filename='imageclassifier_2.h5')

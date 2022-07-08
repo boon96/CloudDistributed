@@ -6,6 +6,7 @@ RUN apt-get install ffmpeg libsm6 libxext6  -y
 COPY ./API_Images /app/API_Images
 COPY Online_API.py /app
 COPY haarcascade_frontalface_default.xml /app
+COPY ./models /app/models/
 WORKDIR /app
 
 EXPOSE 8000
