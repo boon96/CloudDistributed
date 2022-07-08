@@ -3,7 +3,7 @@ version: "3"
 services:
   stacking_model:
     build: ./
-    image: integrated_model
+    image: 1885011292/integrated_model
     command: "python3 ./integrated_stacking_model.py"
     ports:
       - 8004:8004

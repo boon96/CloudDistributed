@@ -13,3 +13,4 @@ COPY combine.py /app
 COPY model_graph.png /app
 WORKDIR /app
 EXPOSE 8004
+CMD ["python3", "./integrated_stacking_model.py"]

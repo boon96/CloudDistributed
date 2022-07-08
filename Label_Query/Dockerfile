@@ -11,3 +11,4 @@ COPY ./models /app/models
 COPY Label_Query.py /app
 WORKDIR /app
 EXPOSE 8001
+CMD ["python3", "./Label_Query.py","http://host.docker.internal:8000/predict/"]

@@ -3,7 +3,7 @@ version: "3"
 services:
   api_1:
     build: ./Query_API/
-    image: query_api
+    image: 1885011292/query_api
     command:  uvicorn Online_API:app --reload --workers 1 --host 0.0.0.0 --port 8000
     ports:
       - 8000:8000
@@ -12,7 +12,7 @@ services:
 
   label_1:
     build: ./Label_Query/
-    image: label_query
+    image: 1885011292/label_query
     command: "python3 ./Label_Query.py http://host.docker.internal:8000/predict/"
     ports:
       - 8001:8001
@@ -23,7 +23,7 @@ services:
 
   api_2:
     build: ./Online_API_2/
-    image: query_api2
+    image: 1885011292/query_api2
     command:  uvicorn Online_API:app --reload --workers 1 --host 0.0.0.0 --port 8002
     ports:
       - 8002:8002
@@ -32,7 +32,7 @@ services:
 
   label_2:
     build: ./Label_Query/
-    image: label_query
+    image: 1885011292/label_query2
     command: "python3 ./Label_Query.py http://host.docker.internal:8002/predict/"
     ports:
       - 8003:8003
